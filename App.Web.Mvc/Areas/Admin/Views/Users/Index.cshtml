@@ -1,0 +1,49 @@
+﻿@model IEnumerable<App.Web.Entity.Concrete.User>
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="container mt-5">
+    <h3>Users</h3>
+    <hr />
+    <p>
+        <a asp-action="Create" class="btn btn-success">Add New User</a>
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Creation Date</th>
+                    <th>Role</th>
+                    <th>Update Date</th>
+                    <th>Deletion Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.City)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RoleId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DeletedAt)</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

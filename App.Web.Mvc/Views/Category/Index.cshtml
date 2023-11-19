@@ -1,0 +1,49 @@
+﻿@model CategoryViewModel
+@{
+    ViewData["Title"] = Model.Category.Name + " Category Blogs";
+}
+
+<section class="section-padding pt-4">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model.Post)
+            {
+                <div class="col-12 col-md-3">
+                    <div class="welcome-post">
+                        <div class="post-tag">
+                            <a asp-controller="Category" asp-action="Index" asp-route-id="@Model.Category.Id">@Model.Category.Name</a>
+                        </div>
+                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Post.Id" class="post-link">
+                            <h2 class="font-pt">@Html.Raw(item.Post.Title)</h2>
+                            <p class="post-date">@item.Post.CreatedAt.ToString("MMMM dd, yyyy")</p>
+                            <!-- Post Thumbnail -->
+                            @if (item.PostImage is not null)
+                            {
+                                <div class="blog-post-thumbnail my-5">
+                                    <img src="@item.PostImage.ImagePath" alt="post-thumb" width="200" height="150">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="blog-post-thumbnail my-5">
+                                    <img src="~\Img\fashion\img-1.jpg" alt="post-thumb" width="200" height="150">
+                                </div>
+                            }
+                            <!-- Post Excerpt -->
+                            <p>
+                                @if (item.Post.Content.Length < 100)
+                                {
+                                    @Html.Raw(item.Post.Content)
+                                }
+                                else
+                                {
+                                    @Html.Raw(item.Post.Content.Substring(0, 100))
+                                }
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

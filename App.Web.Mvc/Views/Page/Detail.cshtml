@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "About Me";
+}
+
+@model AboutMeViewModel
+<div class="breadcrumb-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="text-center">
+                    <h2 class="lg-title">About Me</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="pt-5 padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    @if (Model.PageImages != null)
+                    {
+                        @foreach (var image in Model.PageImages)
+                        {
+                            <div class="col-lg-12">
+                                <img src="@image.FileName" alt="Image" class="img-fluid my-2" />
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h5 class="text-uppercase letter-spacing mb-4">Who is me?</h5>
+                                <p>@Model.WhoIsMe</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5 class="text-uppercase letter-spacing mb-4">My vission</h5>
+                                <p>@Model.MyVision</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5 class="text-uppercase letter-spacing mb-4">Follow Me :</h5>
+                                <div class="follow-socials">
+                                    <a href="https://www.facebook.com/" target="_blank" class="fb"><i class="ti-facebook"></i></a>
+                                    <a href="https://www.twitter.com/" target="_blank" class="twt"><i class="ti-twitter"></i></a>
+                                    <a href="https://www.instagram.com/" target="_blank" class="inst"><i class="ti-instagram"></i></a>
+                                    <a href="https://www.youtube.com/" target="_blank" class="youtube"><i class="ti-youtube"></i></a>
+                                    <a href="https://tr.pinterest.com/" target="_blank" class="pint"><i class="ti-pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="mb-3 mt-5">@Model.Title</h3>
+                        <p class="mb-5">@Model.Content</p>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="about-widget mb-4 mb-lg-0">
+                                    <img src="/Img/news/news-1.jpg" alt="" class="img-fluid">
+                                    <h4 class="mt-3">Hill ward</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="about-widget mb-4 mb-lg-0">
+                                    <img src="/Img/news/news-2.jpg" alt="" class="img-fluid">
+                                    <h4 class="mt-3">Awesome ride</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="about-widget mb-4 mb-lg-0">
+                                    <img src="/Img/news/news-3.jpg" alt="" class="img-fluid">
+                                    <h4 class="mt-3">Newyork</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="about-widget mb-4 mb-lg-0">
+                                    <img src="/Img/news/news-4.jpg" alt="" class="img-fluid">
+                                    <h4 class="mt-3">Rising Sea</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

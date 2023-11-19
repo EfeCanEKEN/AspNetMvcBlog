@@ -1,0 +1,10 @@
+﻿@model HomeViewModel
+
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+
+@await Component.InvokeAsync("Slider");
+
+@await Component.InvokeAsync("PostItem");

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SearchViewModel>
+
+@{
+    ViewData["Title"] = "Blog Search";
+}
+
+<section class="section-padding pt-4">
+    <div class="container-fluid">
+        <!-- Use container-fluid for full width -->
+        <div class="row">
+            <!-- Widen the row -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 mb-4 post-list border-bottom pb-4">
+                    <div class="row no-gutters">
+                        <article class="post-grid mb-5">
+                            <div class="col-md-6">
+                                <a class="post-thumb mb-4 d-block" asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Post.Id">
+                                    <img src="@(!string.IsNullOrEmpty(item.PostImage?.ImagePath) ? item.PostImage.ImagePath : "../Img/news/f1.jpg")" alt="Görsel Yok" class="img-fluid">
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="post-article mt-sm-3">
+                                    <div class="meta-cat">
+                                        <span class="letter-spacing cat-name font-extra text-uppercase font-sm">
+                                            <a asp-controller="Category" asp-action="Index" asp-route-id="@item.Category.Id">@Html.Raw(item.Category.Name)</a>
+                                        </span>
+                                    </div>
+                                    <h3 class="post-title mt-2">
+                                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Post.Id">
+                                            @item.Post.Title
+                                        </a>
+                                    </h3>
+                                    <div class="post-content">
+                                        <p>
+                                            @if (!string.IsNullOrEmpty(item.Post.Content) && item.Post.Content.Length > 75)
+                                            {
+                                                @Html.Raw(item.Post.Content.Substring(0, 75))
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw(item.Post.Content)
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            }
+        </div> <!-- Close the widened row -->
+        <div class="col-md-12 pagination mt-5 pt-4">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#" class="active">1</a></li>
+                <li class="list-inline-item"><a href="#">2</a></li>
+                <li class="list-inline-item"><a href="#">3</a></li>
+                <li class="list-inline-item"><a href="#" class="prev-posts"><i class="ti-arrow-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</section>

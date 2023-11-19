@@ -1,0 +1,42 @@
+﻿@model App.Web.Entity.Concrete.Category
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="container mt-4">
+    <h3 class="my-4">Edit Category</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Update" method="post" class="mb-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="Name" class="form-label">Category Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Description" class="form-label">Description</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="ParentId" class="form-label">Parent Category</label>
+                    <select asp-for="ParentId" class="form-select" asp-items="ViewBag.ParentId">
+                        <option value="0">Main Category</option>
+                    </select>
+                    <span asp-validation-for="ParentId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-4 d-flex">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2 ms-3">Return List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
